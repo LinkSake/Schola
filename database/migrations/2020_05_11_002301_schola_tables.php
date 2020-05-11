@@ -17,8 +17,8 @@ class ScholaTables extends Migration
             $table->bigIncrements('idCurso');
             $table->string('nombreCurso');
             $table->dateTime('fechaAlta');
-            $table->dateTime('fechaBaja');
-            $table->boolean('vigente');
+            $table->dateTime('fechaBaja')->nullable();;
+            $table->boolean('vigente')->default(false);
         });
 
         Schema::create('catGradoAcademico', function (Blueprint $table) {
