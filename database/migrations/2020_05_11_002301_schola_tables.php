@@ -33,7 +33,6 @@ class ScholaTables extends Migration
             $table->string('materno');
             $table->string('nombre');
             $table->string('curp');
-            // $table->bigIncrements('idGradoAca');
         });
 
         Schema::table('datMaestro', function (Blueprint $table) {
@@ -45,8 +44,6 @@ class ScholaTables extends Migration
 
         Schema::create('relMaestroCurso', function (Blueprint $table) {
             $table->bigIncrements('idMaestroCurso');
-            // $table->bigIncrements('idMaestro');
-            // $table->bigIncrements('idCurso');
         });
 
         Schema::table('relMaestroCurso', function (Blueprint $table) {
@@ -69,6 +66,9 @@ class ScholaTables extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('relMaestroCurso');
+        Schema::dropIfExists('datMaestro');
+        Schema::dropIfExists('catGradoAcademico');
+        Schema::dropIfExists('catCursos');
     }
 }
