@@ -23,11 +23,14 @@ class OverallView extends Migration
                 `r`.`idMaestroCurso` AS `idMaestroCurso`,
                 `cu`.`nombreCurso` AS `nombreCurso`,
                 `cu`.`vigente` AS `vigenciaCurso`,
+                `cu`.`fechaAlta` AS `fechaAlta`,
+                `cu`.`fechaBaja` AS `fechaBaja`,
                 `d`.`idMaestro` AS `idMaestro`,
                 `d`.`nombre` AS `nombreMaestro`,
                 `d`.`paterno` AS `paternoMaestro`,
                 `d`.`materno` AS `maternoMaestro`,
                 `d`.`matricula` AS `matriculaMaestro`,
+                `d`.`curp` AS `curp`,
                 `c`.`gradoAcademico` AS `gradoAcademico`
             FROM
                 (((`schola`.`catGradoAcademico` `c`
