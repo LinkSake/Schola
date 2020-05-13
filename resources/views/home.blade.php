@@ -24,6 +24,8 @@
       <th scope="col">#</th>
       <th scope="col">Curso</th>
       <th scope="col">Vigencia</th>
+      <th scope="col">Inicio del curso</th>
+      <th scope="col">Fin del curso</th>
       <th scope="col">Nombre del maestro</th>
       <th scope="col">Apellido paterno</th>
       <th scope="col">Apellido materno</th>
@@ -48,6 +50,8 @@
                 <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"/>
             </svg>
             @endif</td>
+        <td>{{$dato->fechaAlta}}</td>
+        <td>{{$dato->fechaBaja}}</td>
         <td>{{$dato->nombreMaestro}}</td>
         <td>{{$dato->paternoMaestro}}</td>
         <td>{{$dato->maternoMaestro}}</td>
