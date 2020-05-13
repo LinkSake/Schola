@@ -13,6 +13,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'GeneralController@index');
+
+Route::group(['prefix'=>'curso'], function() {
+    Route::get('listado', 'CursoController@list');
+    Route::get('nuevo', 'CursoController@new');
+    Route::post('nuevo', 'CursoController@create');
+    Route::get('editar/{id}', 'CursoController@edit');
+    Route::post('editar', 'CursoController@update');
+    Route::get('eliminar/{id}', 'CursoController@remove');
+    Route::post('eliminar', 'CursoController@delete');
+});
+
+Route::group(['prefix'=>'maestro'], function() {
+    Route::get('listado', 'MaestroController@list');
+    Route::get('nuevo', 'MaestroController@new');
+    Route::post('nuevo', 'MaestroController@create');
+    Route::get('editar/{id}', 'MaestroController@edit');
+    Route::post('editar', 'MaestroController@update');
+    Route::get('eliminar/{id}', 'MaestroController@remove');
+    Route::post('eliminar', 'MaestroController@delete');
+});
+
+Route::group(['prefix'=>'maestroCurso'], function() {
+    Route::get('listado', 'MaestroCursoController@list');
+    Route::get('nuevo', 'MaestroCursoController@new');
+    Route::post('nuevo', 'MaestroCursoController@create');
+    Route::get('editar/{id}', 'MaestroCursoController@edit');
+    Route::post('editar', 'MaestroCursoController@update');
+    Route::get('eliminar/{id}', 'MaestroCursoController@remove');
+    Route::post('eliminar', 'MaestroCursoController@delete');
 });
