@@ -22,6 +22,7 @@ class OverallView extends Migration
             SELECT 
                 `r`.`idMaestroCurso` AS `idMaestroCurso`,
                 `cu`.`nombreCurso` AS `nombreCurso`,
+                `cu`.`vigente` AS `vigenciaCurso`,
                 `d`.`idMaestro` AS `idMaestro`,
                 `d`.`nombre` AS `nombreMaestro`,
                 `d`.`paterno` AS `paternoMaestro`,

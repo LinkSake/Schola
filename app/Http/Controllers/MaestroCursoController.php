@@ -32,7 +32,7 @@ class MaestroCursoController extends Controller
         $result = DB::select('
             CALL crearNuevoMaestroCurso(?,?)
         ', array($idMaestro, $idCurso));
-        return redirect()->action('MaestroCursoController@list');
+        return redirect()->action('GeneralController@list');
     }
 
     public function edit($id)
@@ -42,7 +42,7 @@ class MaestroCursoController extends Controller
             ->get();
         $maestros = DB::select('CALL leerMaestros');
         $cursos = DB::select('CALL leerCursos');
-        return view('maestros/detalle',[
+        return view('maestroCurso/detalle',[
             'maestroCurso' => $maestroCurso,
             'maestros' => $maestros,
             'cursos' => $cursos
@@ -56,7 +56,7 @@ class MaestroCursoController extends Controller
         $result = DB::select('
             CALL editarMaestroCurso(?,?)
         ', array($idMaestro, $idCurso));
-        return redirect()->action('MaestroCursoController@list');
+        return redirect()->action('GeneralController@list');
     }
 
     public function remove($id)
@@ -66,7 +66,7 @@ class MaestroCursoController extends Controller
             ->get();
         $maestros = DB::select('CALL leerMaestros');
         $cursos = DB::select('CALL leerCursos');
-        return view('maestros/eliminar',[
+        return view('maestroCurso/eliminar',[
             'maestroCurso' => $maestroCurso,
             'maestros' => $maestros,
             'cursos' => $cursos
@@ -79,6 +79,6 @@ class MaestroCursoController extends Controller
         $maestroCurso = DB::select('
             CALL eliminarMaestroCurso(?)
         ', array($id));
-        return redirect()->action('MaestroCursoController@list');
+        return redirect()->action('GeneralController@list');
     }
 }

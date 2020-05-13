@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class MestroController extends Controller
+class MaestroController extends Controller
 {
     public function list()
     {
