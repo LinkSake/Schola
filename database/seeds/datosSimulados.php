@@ -17,12 +17,14 @@ class datosSimulados extends Seeder
         // catCursos
         DB::table('catCursos')->insert([
             'nombreCurso' => Str::random(10),
-            'fechaAlta' => Carbon::now(),
-            'vigente' => true,
+            'fechaAlta' => Carbon::now()->subDays(15),
+            'fechaBaja' => Carbon::now(),
+            'vigente' => false,
         ]);
         DB::table('catCursos')->insert([
             'nombreCurso' => Str::random(10),
             'fechaAlta' => Carbon::now(),
+            'fechaBaja' => Carbon::now()->addDays(10),
             'vigente' => true,
         ]);
         DB::table('catCursos')->insert([
