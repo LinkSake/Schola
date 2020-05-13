@@ -5,15 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class MaestroCursoController extends Controller
+class MaestroCursoController extends GeneralController
 {
-    public function list()
-    {
-        $maestroCurso = DB::select('CALL leerMaestroCurso');
-        return view('maestroCurso/listado',[
-            'maestroCurso' => $maestroCurso
-            ]);
-    }
 
     public function new()
     {
@@ -32,12 +25,12 @@ class MaestroCursoController extends Controller
         $result = DB::select('
             CALL crearNuevoMaestroCurso(?,?)
         ', array($idMaestro, $idCurso));
-        return redirect()->action('GeneralController@list');
+        return redirect()->action('GeneralController@index');
     }
 
     public function edit($id)
     {
-        $maestroCurso = DB::table('relMaestroCrso')
+        $maestroCurso = DB::table('relMaestroCurso')
             ->where('idMaestroCurso', '=', $id)
             ->get();
         $maestros = DB::select('CALL leerMaestros');
@@ -51,12 +44,13 @@ class MaestroCursoController extends Controller
 
     public function update(Request $request)
     {
+        $id = $request->input('id');
         $idMaestro = $this->validateInt($request->input('idMaestro'));
         $idCurso = $this->validateInt($request->input('idCurso'));
         $result = DB::select('
-            CALL editarMaestroCurso(?,?)
-        ', array($idMaestro, $idCurso));
-        return redirect()->action('GeneralController@list');
+            CALL editarMaestroCurso(?,?,?)
+        ', array($id,$idMaestro, $idCurso));
+        return redirect()->action('GeneralController@index');
     }
 
     public function remove($id)
@@ -79,6 +73,6 @@ class MaestroCursoController extends Controller
         $maestroCurso = DB::select('
             CALL eliminarMaestroCurso(?)
         ', array($id));
-        return redirect()->action('GeneralController@list');
+        return redirect()->action('GeneralController@index');
     }
 }

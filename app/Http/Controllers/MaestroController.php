@@ -5,12 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class MaestroController extends Controller
+class MaestroController extends GeneralController
 {
     public function list()
     {
         $maestros = DB::select('CALL leerMaestros');
-        return view('maestros/listado',['maestros' => $maestros]);
+        $grados = DB::select('CALL leerGradoAcademico');
+        return view('maestros/listado',[
+            'maestros' => $maestros,
+            'grados' => $grados
+            ]);
     }
 
     public function new()
@@ -47,6 +51,7 @@ class MaestroController extends Controller
 
     public function update(Request $request)
     {
+        $id = $request->input('id');
         $plate = $this->validateInt($request->input('plate'));
         $father = $this->validateString($request->input('father'));
         $mother = $this->validateString($request->input('mother'));
@@ -54,8 +59,8 @@ class MaestroController extends Controller
         $curp = $this->validateString($request->input('curp'));
         $idGradoAca = $this->validateInt($request->input('idGradoAca'));
         $result = DB::select('
-            CALL editarMaestro(?,?,?,?,?,?)
-        ', array($plate, $father, $mother, $name, $curp, $idGradoAca));
+            CALL editarMaestro(?,?,?,?,?,?,?)
+        ', array($id, $plate, $father, $mother, $name, $curp, $idGradoAca));
         return redirect()->action('MaestroController@list');
     }
 
@@ -64,7 +69,11 @@ class MaestroController extends Controller
         $maestro = DB::table('datMaestro')
             ->where('idMaestro', '=', $id)
             ->get();
-        return view('maestros/eliminar',['maestro' => $maestro]);
+        $grados = DB::select('CALL leerGradoAcademico');
+        return view('maestros/eliminar',[
+                'maestro' => $maestro,
+                'grados' => $grados
+                ]);
     }
 
     public function delete(Request $request)
