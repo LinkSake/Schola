@@ -63,7 +63,7 @@
         <div class="col-md-12">
             <div class="form-group">
                 <label for="sel2">Dará el curso...</label>
-                <select class="form-control" id="idGradoAca" name="idGradoAca">
+                <select class="form-control" id="idCurso" name="idCurso">
                     @foreach($cursos as $curso)
                         @if($idCurso == $curso->idCurso)
                             <option value="{{$curso->idCurso}}" selected>
