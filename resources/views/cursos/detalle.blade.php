@@ -3,20 +3,22 @@
 @if(isset($curso))
     @php
         $title = 'Editar curso';
+        $id = $curso[0]->idCurso;
         $name = $curso[0]->nombreCurso;
         $init = $curso[0]->fechaAlta;
         $end = $curso[0]->fechaBaja;
         $active = $curso[0]->vigente;
-        $action = 'CursoController@create';
+        $action = 'CursoController@update';
     @endphp
 @else
     @php
         $title = 'Crear curso';
+        $id = 0;
         $name = '';
         $init = '';
         $end = '';
         $active = false;
-        $action = 'CursoController@update';
+        $action = 'CursoController@create';
     @endphp
 @endif
 
@@ -35,6 +37,9 @@
 @section('content')
     <form action="{{action($action)}}" method="post">
         {{csrf_field()}}
+        @if($id != 0)
+        <input type="hidden" name="id" id="id" value="{{$id}}">
+        @endif
         <div class="row">
             <div class="col-md-6">
             <div class="form-group">
@@ -53,7 +58,7 @@
             </div>
             </div>
         </div>
-        <!-- TODO: Hacer modificación en el update. Que si no se recibe una fecha no hay pedo. -->
+        <!-- TODO: Hacer modificación en el update. Que si no se recibe una fecha no haya problema. -->
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">

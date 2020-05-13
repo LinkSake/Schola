@@ -3,7 +3,7 @@
 @section('card_title')
 <span>Listado de maestros</span>
 <div style="float: right;">
-<a href="{{ url('curso/nuevo') }}" style="color: white;">
+<a href="{{ url('maestro/nuevo') }}" style="color: white;">
     <span style="margin-right: .5 rem;">+ Nuevo maestro</span>
 </a>
 <span style="mr-1 ml-1"> | </span>
@@ -25,6 +25,8 @@
       <th scope="col">Nombre</th>
       <th scope="col">Apellido paterno</th>
       <th scope="col">Apellido materno</th>
+      <th scope="col">CURP</th>
+      <th scope="col">Grado Academico</th>
       <th scope="col"></th>
       <th scope="col"></th>
     </tr>
@@ -37,6 +39,14 @@
         <td>{{$maestro->nombre}}</td>
         <td>{{$maestro->paterno}}</td>
         <td>{{$maestro->materno}}</td>
+        <td>{{$maestro->curp}}</td>
+        <td>
+            @foreach($grados as $grado)
+                @if($maestro->idGradoAca == $grado->idGradoAca)
+                    {{$grado->gradoAcademico}}
+                @endif
+            @endforeach
+        </td>
         <td>
             <a href="{{ url('maestro/editar/'.$maestro->idMaestro) }}">
                 <svg class="bi bi-pencil-square" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

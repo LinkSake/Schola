@@ -3,7 +3,7 @@
 @section('card_title')
 <span>Schola</span>
 <div style="float: right;">
-<a href="{{ url('maestro/listado') }}" style="color: white;">
+<a href="{{ url('maestroCurso/nuevo') }}" style="color: white;">
     <span style="margin-right: .5 rem;">Asignar nuevo curso a un maestro</span>
 </a>
 <span style="mr-1 ml-1"> | </span>

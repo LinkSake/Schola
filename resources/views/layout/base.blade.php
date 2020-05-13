@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
 </head>
-<body>
+<body style="background-color: AliceBlue;">
     <div class="container" style="margin-top:10%;">
     <div class="panel panel-primary">
         <div class="panel-heading">@yield('card_title')</div>
