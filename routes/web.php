@@ -36,7 +36,6 @@ Route::group(['prefix'=>'maestro'], function() {
 });
 
 Route::group(['prefix'=>'maestroCurso'], function() {
-    Route::get('listado', 'MaestroCursoController@list');
     Route::get('nuevo', 'MaestroCursoController@new');
     Route::post('nuevo', 'MaestroCursoController@create');
     Route::get('editar/{id}', 'MaestroCursoController@edit');
