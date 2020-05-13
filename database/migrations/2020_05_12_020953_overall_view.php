@@ -19,13 +19,13 @@ class OverallView extends Migration
         VIEW `schola`.`vistaGeneral` AS
             SELECT 
                 `r`.`idMaestroCurso` AS `idMaestroCurso`,
-                `cu`.`nombreCurso` AS `nombreCurso`
+                `cu`.`nombreCurso` AS `nombreCurso`,
                 `d`.`idMaestro` AS `idMaestro`,
                 `d`.`nombre` AS `nombreMaestro`,
                 `d`.`paterno` AS `paternoMaestro`,
                 `d`.`materno` AS `maternoMaestro`,
                 `d`.`matricula` AS `matriculaMaestro`,
-                `c`.`gradoAcademico` AS `gradoAcademico`,
+                `c`.`gradoAcademico` AS `gradoAcademico`
             FROM
                 (((`schola`.`catGradoAcademico` `c`
                 JOIN `schola`.`datMaestro` `d` ON ((`c`.`idGradoAca` = `d`.`idGradoAca`)))
@@ -41,6 +41,6 @@ class OverallView extends Migration
      */
     public function down()
     {
-        DB:unprepared('DROP VIEW IF EXISTS vistaGeneral;');
+        DB::unprepared('DROP VIEW IF EXISTS vistaGeneral;');
     }
 }

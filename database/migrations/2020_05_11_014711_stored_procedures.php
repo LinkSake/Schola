@@ -41,9 +41,9 @@ class StoredProcedures extends Migration
                 )
             BEGIN
                 UPDATE catCursos SET 
-                nombreCurso = nuevoNombre
-                fechaAlta = nuevaFechaAlta
-                fechaBaja = nuevaFechaBaja
+                nombreCurso = nuevoNombre,
+                fechaAlta = nuevaFechaAlta,
+                fechaBaja = nuevaFechaBaja,
                 vigente = nuevoVigente
                 WHERE idCurso = idCursoEditar;
             END
@@ -68,7 +68,7 @@ class StoredProcedures extends Migration
                 IN `idCursoEliminar` int
             )
             BEGIN
-                DELETE FROM items_la 
+                DELETE FROM catCursos
                 WHERE idCurso = idCursoEliminar;
             END
         ');
@@ -106,10 +106,10 @@ class StoredProcedures extends Migration
                 )
             BEGIN
                 UPDATE datMaestro SET 
-                matricula = nuevaMatricula
-                paterno = nuevoPaterno
-                materno = nuevoMaterno
-                nombre = nuevoNombre
+                matricula = nuevaMatricula,
+                paterno = nuevoPaterno,
+                materno = nuevoMaterno,
+                nombre = nuevoNombre,
                 curp = nuevoCurp
                 idGradoAca = nuevoGradoAca
                 WHERE idMaestro = idMaestroEditar;
@@ -135,7 +135,7 @@ class StoredProcedures extends Migration
                 IN `idMaestroEliminar` int
             )
             BEGIN
-                DELETE FROM items_la 
+                DELETE FROM datMaestro
                 WHERE idMaestro = idMaestroEliminar;
             END
         ');
@@ -164,7 +164,7 @@ class StoredProcedures extends Migration
                 )
             BEGIN
                 UPDATE relMaestroCurso SET 
-                idMaestro = nuevoMaestro
+                idMaestro = nuevoMaestro,
                 idCurso = nuevoCurso
                 WHERE idMaestroCurso = idMaestroCursoEditar;
             END
@@ -189,7 +189,7 @@ class StoredProcedures extends Migration
                 IN `idMaestroCursoEliminar` int
             )
             BEGIN
-                DELETE FROM items_la 
+                DELETE FROM relMaestroCurso 
                 WHERE idMaestroCurso = idMaestroCursoEliminar;
             END
         ');
