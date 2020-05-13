@@ -22,8 +22,8 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Nombre</th>
-      <th scope="col">Inicio</th>
-      <th scope="col">Final</th>
+      <th scope="col">Inicio del curso</th>
+      <th scope="col">Fin del curso</th>
       <th scope="col">Vigente</th>
       <th scope="col"></th>
       <th scope="col"></th>
