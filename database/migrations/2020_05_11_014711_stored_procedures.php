@@ -110,7 +110,7 @@ class StoredProcedures extends Migration
                 paterno = nuevoPaterno,
                 materno = nuevoMaterno,
                 nombre = nuevoNombre,
-                curp = nuevoCurp
+                curp = nuevoCurp,
                 idGradoAca = nuevoGradoAca
                 WHERE idMaestro = idMaestroEditar;
             END
