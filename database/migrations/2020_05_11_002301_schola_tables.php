@@ -50,11 +50,15 @@ class ScholaTables extends Migration
             $table->unsignedBigInteger('idMaestro');
             $table->foreign('idMaestro')
                 ->references('idMaestro')
-                ->on('datMaestro');
+                ->on('datMaestro')
+                ->constrained()
+                ->onDelete('cascade');
             $table->unsignedBigInteger('idCurso');
             $table->foreign('idCurso')
                 ->references('idCurso')
-                ->on('catCursos');
+                ->on('catCursos')
+                ->constrained()
+                ->onDelete('cascade');
         });
 
     }

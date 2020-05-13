@@ -14,6 +14,8 @@ class OverallView extends Migration
     public function up()
     {
         DB::unprepared('
+        DROP VIEW IF EXISTS vistaGeneral;
+
         CREATE 
             ALGORITHM = UNDEFINED 
         VIEW `schola`.`vistaGeneral` AS
